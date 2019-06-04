@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Res Menu</string>
+    <string name="welcome_message">WELCOME</string>
+    <string name="hint_id">  Restaurent Id</string>
+    <string name="hint_pass">Password</string>
+    <string name="forgot_password">Forgot password?      </string>
+    <string name="txt_login">LOG IN</string>
+    <string name="txt_live_table">Live Table</string>
+    <string name="txt_freshness">Freshness</string>
+    <string name="txt_taste">Taste</string>
+    <string name="txt_value_for_money">Value for money</string>
+    <string name="txt_staff_courtesy">Staff courtesy</string>
+    <string name="txt_staff_knowledge">Staff knowlege</string>
+    <string name="txt_presentation">Note :-</string>
+    <string name="txt_digital_service">Note :-</string>
+    <string name="personal_openion">Note :-</string>
+    <string name="txt_note">Note :-</string>
+</resources>

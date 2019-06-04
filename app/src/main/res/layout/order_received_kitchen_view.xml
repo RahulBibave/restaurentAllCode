@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+   <LinearLayout
+       android:padding="3dp"
+       android:weightSum="4"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <com.resmenu.customViews.CustomTextView
+           android:id="@+id/txtNumber"
+           android:textSize="20dp"
+           android:text="1"
+           android:gravity="center"
+           android:layout_weight="0.5"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <com.resmenu.customViews.CustomTextView
+           android:id="@+id/txtItemName"
+           android:textSize="20dp"
+           android:text="confirm is pressed"
+           android:layout_weight="2"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content" />
+       <com.resmenu.customViews.CustomTextView
+           android:id="@+id/txtQnt"
+           android:textSize="20dp"
+           android:gravity="center"
+           android:text="1"
+           android:layout_weight="0.5"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content" />
+       <com.resmenu.customViews.CustomTextView
+           android:gravity="center"
+           android:textSize="20dp"
+           android:text="345"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content" />
+
+   </LinearLayout>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#494848"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+</LinearLayout>
