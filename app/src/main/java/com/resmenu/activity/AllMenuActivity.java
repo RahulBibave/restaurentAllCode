@@ -131,10 +131,11 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
                             Double discount = jsonObject.getDouble("Disscount");
                             Boolean isAcive = jsonObject.getBoolean("IsActive");
                             String image =jsonObject.getString("Img");
+                            String CategoryName=jsonObject.getString("CategoryName");
 
                             Double quantity = jsonObject.getDouble("Quantity");
                             Log.e("dddddddddd", "" + image);
-                            MenuItem menuItem = new MenuItem(id, ItemName , ItemDescription, ItemPrize, discount, isAcive, quantity,image);
+                            MenuItem menuItem = new MenuItem(id, ItemName , ItemDescription, ItemPrize, discount, isAcive, quantity,image,CategoryName);
                             menuItemArrayList.add(menuItem);
 
                         }

@@ -10,9 +10,9 @@ public class MenuItem implements Serializable {
     Double Price, Disscount;
     Boolean IsActive;
     Double Quantity;
-    String Img;
+    String Img,CategoryName;
 
-    public MenuItem(int itemId, String itemName, String itemDescription, Double price, Double disscount, Boolean isActive, Double quantity, String img) {
+    public MenuItem(int itemId, String itemName, String itemDescription, Double price, Double disscount, Boolean isActive, Double quantity, String img, String categoryName) {
         ItemId = itemId;
         ItemName = itemName;
         ItemDescription = itemDescription;
@@ -21,6 +21,7 @@ public class MenuItem implements Serializable {
         IsActive = isActive;
         Quantity = quantity;
         Img = img;
+        CategoryName = categoryName;
     }
 
     public int getItemId() {
@@ -85,5 +86,13 @@ public class MenuItem implements Serializable {
 
     public void setImg(String img) {
         Img = img;
+    }
+
+    public String getCategoryName() {
+        return CategoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        CategoryName = categoryName;
     }
 }

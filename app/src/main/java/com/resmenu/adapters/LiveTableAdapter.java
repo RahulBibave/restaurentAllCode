@@ -52,7 +52,7 @@ public class LiveTableAdapter extends RecyclerView.Adapter<LiveTableAdapter.Tabl
         int x = i + 1;
         tableViewHolder.txtTableNo.setText("" + x);
 
-        if (TablesActivity.role.equals("1")) {
+        /*if (TablesActivity.role.equals("1")) {
             if (i == 0 || i == 1) {
                 tableViewHolder.mLinOuter.setBackground(mContext.getResources().getDrawable(R.drawable.table_checked_outer));
                 tableViewHolder.mLinInner.setBackground(mContext.getResources().getDrawable(R.drawable.table_checked_inner));
@@ -72,7 +72,7 @@ public class LiveTableAdapter extends RecyclerView.Adapter<LiveTableAdapter.Tabl
                 });
             }
 
-        } else {
+        } else {*/
             //setTableStatus();
             int y=i+1;
             try {
@@ -92,10 +92,7 @@ public class LiveTableAdapter extends RecyclerView.Adapter<LiveTableAdapter.Tabl
             tableViewHolder.mLinOuter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (TablesActivity.role.equals("1")) {
-                        Intent intentNext = new Intent(mContext, ActivityKitchen.class);
-                        mContext.startActivity(intentNext);
-                    } else {
+
 
                         SharedPreferences.Editor editor = mContext.getSharedPreferences("restaurant", MODE_PRIVATE).edit();
                         editor.putInt("table_no", i + 1);
@@ -109,9 +106,9 @@ public class LiveTableAdapter extends RecyclerView.Adapter<LiveTableAdapter.Tabl
 
                     }
 
-                }
+
             });
-        }
+
 
     }
 

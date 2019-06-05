@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <LinearLayout
+        android:background="#CAC6C6"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,10 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_margin="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+
         android:padding="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -39,7 +42,7 @@
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Taste"
+                android:text="Freshness"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -61,7 +64,7 @@
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Teast"
+                android:text="Taste"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -84,13 +87,12 @@
                android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Teast"
+                android:text="Value of Money"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <RatingBar
-
                 android:layout_gravity="end"
                 android:gravity="end"
                 android:layout_width="wrap_content"
@@ -101,8 +103,104 @@
 
     </LinearLayout>
 
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.resmenu.customViews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <com.resmenu.customViews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Staff Courtesy"
+                        android:textSize="25sp" />
+
+                    <RatingBar
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end" />
+                </LinearLayout>
 
 
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <com.resmenu.customViews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Staff Knowledge"
+                        android:textSize="25sp" />
+
+                    <RatingBar
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <com.resmenu.customViews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Staff Copration"
+                        android:textSize="25sp" />
+
+                    <RatingBar
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
     <LinearLayout
         android:layout_margin="5dp"
         android:layout_marginLeft="15dp"
@@ -115,7 +213,7 @@
         <com.resmenu.customViews.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food"
+            android:text="Venue"
             android:textSize="20dp"/>
         <LinearLayout
             android:layout_gravity="center"
@@ -126,31 +224,7 @@
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Teast"
-                android:textSize="25sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RatingBar
-
-                android:layout_gravity="end"
-                android:gravity="end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-        <LinearLayout
-
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.resmenu.customViews.CustomTextView
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="Teast"
+                android:text="Environment"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -173,10 +247,34 @@
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Teast"
+                android:text="Presentation"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <RatingBar
+
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.resmenu.customViews.CustomTextView
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Digital Service"
+                android:textSize="25sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
 
             <RatingBar
 
@@ -189,95 +287,7 @@
 
 
     </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_margin="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="10dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.resmenu.customViews.CustomTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Food"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.resmenu.customViews.CustomTextView
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="Teast"
-                android:textSize="25sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RatingBar
-
-                android:layout_gravity="end"
-                android:gravity="end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.resmenu.customViews.CustomTextView
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="Teast"
-                android:textSize="25sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RatingBar
-
-                android:layout_gravity="end"
-                android:gravity="end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.resmenu.customViews.CustomTextView
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="Teast"
-                android:textSize="25sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RatingBar
-
-                android:layout_gravity="end"
-                android:gravity="end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
+            </android.support.v7.widget.CardView>
     <LinearLayout
         android:layout_margin="5dp"
         android:layout_marginLeft="15dp"
@@ -288,21 +298,25 @@
         android:layout_height="wrap_content">
 
         <com.resmenu.customViews.CustomEditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/et_personal_openion"
             android:maxLines="5"
             android:hint="Personal openion"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
             <ImageView
+                android:visibility="gone"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_photo_camera_black_24dp"
                 android:layout_width="70dp"
                 android:layout_height="70dp" />
 
             <com.resmenu.customViews.CustomTextView
+                android:visibility="gone"
                 android:gravity="center"
                 android:text="Selfi if you don't mind"
                 android:layout_width="match_parent"
@@ -311,10 +325,13 @@
     <com.resmenu.customViews.CustomButton
         android:id="@+id/btn_submit_feedback"
         android:text="Submit"
+        android:background="@drawable/btn_blue"
+        android:layout_margin="15dp"
         app:fontType="gotham_medium"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

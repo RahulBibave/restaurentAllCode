@@ -1,13 +1,11 @@
 package com.resmenu.activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,7 +26,6 @@ import com.android.volley.toolbox.Volley;
 import com.resmenu.Database.Entity.OrderTable;
 import com.resmenu.Database.Entity.UserTable;
 import com.resmenu.Database.RestaurentMenuDatabase;
-import com.resmenu.POJO.Staff;
 import com.resmenu.R;
 import com.resmenu.constants.ApiUrls;
 import com.resmenu.customViews.CustomButton;
@@ -49,7 +45,7 @@ import static com.resmenu.activity.MainActivity.PREF_NAME;
 
 public class Activity_WaiterLanding extends AppCompatActivity {
 
-    private LinearLayout mMenu, mFeedBack, mLLView_bill;
+    private LinearLayout mMenu, mFeedBack, mLLView_bill,mLinMyOreder;
     private RequestQueue mRequestQueue;
     private Spinner spinner;
     ArrayList<String> arrayListStaffID;
@@ -79,6 +75,7 @@ public class Activity_WaiterLanding extends AppCompatActivity {
         restaurentMenuDatabase = RestaurentMenuDatabase.getInstance(Activity_WaiterLanding.this);
         getStaff();
         init();
+        tableNO=mSharedeSharedPreferences.getInt("table_no", 0);
         if (restaurentMenuDatabase.myOrderDao().orderCount(mSharedeSharedPreferences.getInt("table_no", 0)) > 0){
             SharedPreferences mSharedeSharedPreferences = getSharedPreferences("restaurant", MODE_PRIVATE);
             userTables=new ArrayList<>();
@@ -123,12 +120,24 @@ public class Activity_WaiterLanding extends AppCompatActivity {
             }
         });
 
-        mLLView_bill.setOnClickListener(new View.OnClickListener() {
+        mLinMyOreder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("mycartlist", "count " + restaurentMenuDatabase.myOrderDao().orderCount(mSharedeSharedPreferences.getInt("table_no", 0)));
                 if (restaurentMenuDatabase.myOrderDao().orderCount(mSharedeSharedPreferences.getInt("table_no", 0)) > 0) {
-                    Intent intent = new Intent(Activity_WaiterLanding.this, ActivityViewBill.class);
+                    Intent intent = new Intent(Activity_WaiterLanding.this, ActivityViewOrder.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(mContext,"No order still !!!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mLLView_bill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (restaurentMenuDatabase.myOrderDao().orderCount(mSharedeSharedPreferences.getInt("table_no", 0)) > 0) {
+                    Intent intent = new Intent(Activity_WaiterLanding.this, ActivityViewMyBill.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(mContext,"No order still !!!!",Toast.LENGTH_SHORT).show();
@@ -176,6 +185,7 @@ public class Activity_WaiterLanding extends AppCompatActivity {
         mEdtEmail = findViewById(R.id.edtEmial);
         mEdtMobile = findViewById(R.id.edtMobile);
         mBtnContinue = findViewById(R.id.btnContinue);
+        mLinMyOreder=findViewById(R.id.my_orders);
          //setUserValues();
     }
 

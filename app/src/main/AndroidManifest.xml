@@ -13,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.Kitchen_TableActivity"></activity>
-        <activity android:name=".activity.ActivityViewBill" />
+        <activity android:name=".activity.ActivityMenuDetail"></activity>
+        <activity android:name=".activity.ActivityViewMyBill" />
+        <activity android:name=".activity.Kitchen_TableActivity" />
+        <activity android:name=".activity.ActivityViewOrder" />
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
@@ -32,22 +34,22 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ActivityKitchen"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Activity_Menu"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Activity_Feedback"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Activity_WaiterLanding"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AllMenuActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyCartActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -64,18 +64,20 @@
         android:layout_height="wrap_content">
 
         <com.resmenu.customViews.CustomButton
-            android:background="@color/colorPrimary"
+            android:background="@drawable/btn_blue"
             android:text="MINIMIZE"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
         <com.resmenu.customViews.CustomButton
-            android:background="#FFF"
+            android:background="@drawable/btn_white"
             android:textColor="@color/colorPrimary"
             android:text="CONFIRM"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:layout_width="0dp"

@@ -69,10 +69,12 @@
         app:layout_constraintTop_toBottomOf="@+id/cl_child"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="match_parent"
+        android:background="@color/colorAccent"
         android:layout_height="0dp">
 
 
         <android.support.v7.widget.RecyclerView
+            android:background="@color/white"
             android:id="@+id/recycler_virw_cart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,6 +84,7 @@
         </android.support.v7.widget.RecyclerView>
 
         <android.support.v7.widget.CardView
+
             app:layout_constraintTop_toBottomOf="@+id/recycler_virw_cart"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="match_parent"
@@ -94,6 +97,7 @@
             android:text="Total Amount"
             android:padding="10dp"
             android:textSize="16sp"
+            android:background="@color/colorAccent"
             app:fontType="gotham_medium"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler_virw_cart"
@@ -103,9 +107,10 @@
         <com.resmenu.customViews.CustomTextView
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="10dp"
             android:text="000.00"
+            android:background="@color/colorAccent"
             android:textSize="16sp"
             app:fontType="gotham_medium"
             app:layout_constraintRight_toRightOf="parent"
@@ -136,6 +141,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Proceed to pay"
+        android:background="@drawable/btn_blue"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_continueorder"
         app:layout_constraintHorizontal_bias="0.5"
@@ -144,8 +154,13 @@
     <com.resmenu.customViews.CustomButton
         android:id="@+id/btn_continueorder"
         android:layout_width="0dp"
+        android:background="@drawable/btn_white"
         android:layout_height="wrap_content"
         android:text="Continue Order"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

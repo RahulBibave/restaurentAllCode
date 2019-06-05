@@ -15,7 +15,7 @@ import com.resmenu.customViews.CustomTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityViewBill extends AppCompatActivity {
+public class ActivityViewOrder extends AppCompatActivity {
 
     private RestaurentMenuDatabase restaurentMenuDatabase;
     private List<OrderTable> userTables;
@@ -33,7 +33,7 @@ public class ActivityViewBill extends AppCompatActivity {
         mRecyclerViewKitchen = findViewById(R.id.recycler_virw_cart);
         mRecyclerViewKitchen.setLayoutManager(new LinearLayoutManager(this));
 
-        restaurentMenuDatabase = RestaurentMenuDatabase.getInstance(ActivityViewBill.this);
+        restaurentMenuDatabase = RestaurentMenuDatabase.getInstance(ActivityViewOrder.this);
         getBill();
     }
 

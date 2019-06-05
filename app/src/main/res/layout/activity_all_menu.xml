@@ -52,19 +52,28 @@
 
 
     <com.resmenu.customViews.CustomButton
+        android:layout_marginBottom="5dp"
         android:id="@+id/btn_confirm_order"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Confirm Order"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_viweCart"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.resmenu.customViews.CustomButton
+        android:layout_marginBottom="5dp"
         android:id="@+id/btn_viweCart"
         android:layout_width="0dp"
+        android:background="@drawable/btn_white"
         android:layout_height="wrap_content"
         android:text="View Cart"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_confirm_order" />

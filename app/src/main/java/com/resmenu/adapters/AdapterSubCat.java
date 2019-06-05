@@ -1,6 +1,7 @@
 package com.resmenu.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.resmenu.Database.Entity.MyCart;
 import com.resmenu.Database.RestaurentMenuDatabase;
 import com.resmenu.POJO.MenuItem;
 import com.resmenu.R;
+import com.resmenu.activity.ActivityMenuDetail;
 import com.resmenu.activity.Activity_WaiterLanding;
 import com.resmenu.customViews.CustomButton;
 import com.resmenu.customViews.CustomTextView;
@@ -70,6 +73,24 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
                 Toast.makeText(mContext, "Added to cart", Toast.LENGTH_SHORT).show();
             }
         });
+
+        if (menuItemArrayList.get(position).getCategoryName().equals("Veg")){
+            viewHolderKitchen.imageButton.setBackgroundResource(R.drawable.veg);
+
+        }
+        viewHolderKitchen.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentDetail=new Intent(mContext, ActivityMenuDetail.class);
+                intentDetail.putExtra("name",menuItemArrayList.get(position).getItemName());
+                intentDetail.putExtra("price",menuItemArrayList.get(position).getPrice());
+                intentDetail.putExtra("table_no",Activity_WaiterLanding.tableNO);
+                intentDetail.putExtra("Desc",menuItemArrayList.get(position).getItemDescription());
+                intentDetail.putExtra("Img",menuItemArrayList.get(position).getImg());
+
+                mContext.startActivity(intentDetail);
+            }
+        });
         //  viewHolderKitchen.imageView.clearColorFilter();
         byte[] decodedString = Base64.decode(menuItemArrayList.get(position).getImg(), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
@@ -101,6 +122,7 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
         CustomButton mBtnAddToCart;
         CustomTextView tvMenuTitle, mTvMenuSubTitle, mTvPrice;
         RatingBar mRatingBarMenu;
+        ImageView imageButton;
 
         ViewHolderKitchen(@NonNull View itemView) {
             super(itemView);
@@ -110,6 +132,7 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
             mTvMenuSubTitle = itemView.findViewById(R.id.textView_menu_description);
             mTvPrice = itemView.findViewById(R.id.textView_total_price);
             mBtnAddToCart = itemView.findViewById(R.id.add_cart);
+            imageButton=itemView.findViewById(R.id.imageButton);
 
         }
     }

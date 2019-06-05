@@ -104,7 +104,7 @@
 
             <com.resmenu.customViews.CustomTextView
                 android:id="@+id/tv_not_live"
-                android:text="Not Live "
+                android:text=" No Order"
                 android:layout_marginLeft="@dimen/top_margin"
                 android:layout_marginTop="@dimen/top_margin"
                 android:layout_width="wrap_content"

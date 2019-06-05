@@ -39,15 +39,17 @@ public class adapter_kitchenmain extends RecyclerView.Adapter<adapter_kitchenmai
         if (arrayList.get(i).getBusy()==true){
             viewHolderMain.mLinOuter.setBackground(mContext.getResources().getDrawable(R.drawable.table_checked_outer));
             viewHolderMain.mLinInner.setBackground(mContext.getResources().getDrawable(R.drawable.table_checked_inner));
+            viewHolderMain.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(mContext, ActivityKitchen.class);
+                    intent.putExtra("tableNo",arrayList.get(i).getTableId());
+                    mContext.startActivity(intent);
+                }
+            });
         }
-        viewHolderMain.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mContext, ActivityKitchen.class);
-                intent.putExtra("tableNo",arrayList.get(i).getTableId());
-                mContext.startActivity(intent);
-            }
-        });
+
+
 
     }
 

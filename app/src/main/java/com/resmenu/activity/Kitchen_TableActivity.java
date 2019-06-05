@@ -33,7 +33,7 @@ import static com.resmenu.activity.MainActivity.PREF_NAME;
 
 public class Kitchen_TableActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
-    ArrayList<Table> tableArrayList;
+    ArrayList<Table>tableArrayList;
     String accesstoken;
     private RecyclerView mRecyclerView;
 
@@ -44,35 +44,34 @@ public class Kitchen_TableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_kitchen__table);
         SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         accesstoken = prefs.getString(ACCESS_TOKEN, null);
-        mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        mRecyclerView=findViewById(R.id.recycler_view_live_tables);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         getTable();
     }
-
     public void getTable() {
         mRequestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ApiUrls.mUrlTableList, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject object = null;
-                tableArrayList = new ArrayList<>();
+                tableArrayList=new ArrayList<>();
                 try {
                     object = new JSONObject(response);
                     Boolean sucess_code = object.getBoolean("Status");
-                    if (sucess_code.equals(true)) {
-                        JSONArray array = object.getJSONArray("Data");
-                        Log.e("dddddddddd", "" + array.toString());
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject jsonObject = array.getJSONObject(i);
-                            int TableId = jsonObject.getInt("TableId");
-                            String TableName = jsonObject.getString("TableName");
-                            String TableDescription = jsonObject.getString("TableDescription");
-                            Boolean IsActive = jsonObject.getBoolean("IsActive");
-                            Boolean IsBusy = jsonObject.getBoolean("IsBusy");
-                            Table table = new Table(TableId, TableName, TableDescription, IsActive, IsBusy);
+                    if (sucess_code.equals(true)){
+                        JSONArray array =object.getJSONArray("Data");
+                        Log.e("dddddddddd",""+array.toString());
+                        for (int i = 0 ; i<array.length();i++){
+                            JSONObject jsonObject=array.getJSONObject(i);
+                            int TableId=jsonObject.getInt("TableId");
+                            String TableName=jsonObject.getString("TableName");
+                            String TableDescription=jsonObject.getString("TableDescription");
+                            Boolean IsActive=jsonObject.getBoolean("IsActive");
+                            Boolean IsBusy=jsonObject.getBoolean("IsBusy");
+                            Table table=new Table(TableId,TableName,TableDescription,IsActive,IsBusy);
                             tableArrayList.add(table);
                         }
-                        adapter_kitchenmain adapter_kitchenmain = new adapter_kitchenmain(Kitchen_TableActivity.this, tableArrayList);
+                        adapter_kitchenmain adapter_kitchenmain=new adapter_kitchenmain(Kitchen_TableActivity.this,tableArrayList);
                         mRecyclerView.setAdapter(adapter_kitchenmain);
 
                     }

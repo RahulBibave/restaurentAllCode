@@ -79,8 +79,14 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
         mBtnContinueorde.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                finish();
+            }
+        });
+        mBtnPproceedtopay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 submitOrder();
-                //finish();
             }
         });
 
@@ -184,9 +190,9 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
                     try {
                         double diss = 0.0;
                         jsonObject1.put("ItemId", myCartArrayList.get(i).getId() + "");
-                        jsonObject1.put("CategoryId", "1");
-                        jsonObject1.put("TableId", Activity_WaiterLanding.tableNO + "");
-                        //  jsonObject1.put("Disscount",diss);
+                        jsonObject1.put("CategoryId", "");
+                        jsonObject1.put("TableId", Activity_WaiterLanding.tableNO +"");
+                         jsonObject1.put("ItemName",myCartArrayList.get(i).getMenuName()+"");
                         jsonObject1.put("WaiterId", Activity_WaiterLanding.waiterID + "");
                         jsonObject1.put("Quantity", myCartArrayList.get(i).getItemQuantity() + "");
                        /* UserTable userTable = new UserTable();
@@ -195,6 +201,7 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
                         userTable.setMenuName(myCartArrayList.get(i).getMenuName());
                         userTable.setMenuPrice(myCartArrayList.get(i).getMenuPrice());
                         restaurentMenuDatabase.myUserTableDao().insert(userTable);*/
+
                     } catch (JSONException e) {
                         e.printStackTrace();
 
@@ -239,7 +246,6 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
             userTable.setUserName(Activity_WaiterLanding.Cu_name);
             userTable.setMobileNo(Activity_WaiterLanding.mobile);
             userTable.setUserEmail(Activity_WaiterLanding.email);
-
             restaurentMenuDatabase.myOrderDao().insert(userTable);
         }
 

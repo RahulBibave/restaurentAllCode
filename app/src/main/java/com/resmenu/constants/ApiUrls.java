@@ -18,5 +18,6 @@ public class ApiUrls {
     //get all table
     public static final String mUrlTableList="http://webapi.emenuhotels.in/api/Table/GetAllActiveTable";
     public static final String mUrlGetOrder="http://webapi.emenuhotels.in/api/kitchen/FetchOrderForKitchenByTableId";
-
+    public static final String mUrlGetBill="http://webapi.emenuhotels.in/api/Order/GenerateBill";
+    public static final String mUrlSubmitFeedBack="http://webapi.emenuhotels.in/api/FeedBack/CreateFeedback";
 }

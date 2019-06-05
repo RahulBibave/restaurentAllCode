@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TableLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TableRow
+            android:weightSum="3"
+            android:padding="5dp">
+            <com.resmenu.customViews.CustomTextView
+                android:id="@+id/txt_billitemName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="18sp"
+                android:text="Name" />
+            <com.resmenu.customViews.CustomTextView
+                android:id="@+id/txt_billitemQty"
+
+                android:textSize="18sp"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Quantity" />
+            <com.resmenu.customViews.CustomTextView
+                android:id="@+id/txt_billitemAmount"
+                android:layout_marginRight="5dp"
+                android:gravity="end"
+                android:textSize="18sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Amount" />
+        </TableRow>
+    </TableLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#494848" />
+</LinearLayout>

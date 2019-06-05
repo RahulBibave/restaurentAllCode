@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ActivityMenuDetail">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    
+    <com.resmenu.customViews.CustomTextView
+        android:id="@+id/txtTital"
+        android:layout_marginLeft="40dp"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    
+    <ImageView
+        android:id="@+id/imgDetails"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_attach_money_black_24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+<RelativeLayout
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.resmenu.customViews.CustomTextView
+        android:id="@+id/txtPrice"
+        android:layout_marginLeft="15dp"
+        android:text="$363"
+        android:textSize="20sp"
+        app:fontType="gotham_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       />
+
+    <LinearLayout
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/plus"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_black_24dp"
+            android:text="+"
+
+          />
+
+        <com.resmenu.customViews.CustomTextView
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="16sp"
+            app:fontType="gotham_bold"
+       />
+
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_remove_black_24dp"
+
+          />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+    <RatingBar
+        android:id="@+id/ratingBarMenu"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:numStars="5"
+        android:rating="3">
+
+    </RatingBar>
+
+
+    <com.resmenu.customViews.CustomTextView
+        android:id="@+id/txtDesc"
+        android:textSize="20sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.resmenu.customViews.CustomButton
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textColor="@color/white"
+            android:text="CANCEL"
+            android:id="@+id/btnCancle"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn_blue"
+            android:layout_height="wrap_content" />
+        <com.resmenu.customViews.CustomButton
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:id="@+id/btnAdd"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:text="ADD TO CART"
+            android:background="@drawable/btn_white"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

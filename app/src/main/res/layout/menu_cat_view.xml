@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
     android:background="#BFF7EFEF"
     android:layout_height="wrap_content">
 
@@ -138,5 +140,18 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="60dp"
         android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:id="@+id/imageButton"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toEndOf="@+id/textView_menu_title"
+        app:layout_constraintTop_toTopOf="parent"
+      />
 
 </android.support.constraint.ConstraintLayout>
