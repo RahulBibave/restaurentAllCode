@@ -63,6 +63,7 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cart);
         SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+
         accesstoken = prefs.getString(ACCESS_TOKEN, null);
 
         mBtnPproceedtopay = findViewById(R.id.btn_proceedtopay);

@@ -3,8 +3,8 @@ package com.resmenu.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,12 +19,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.resmenu.Database.Entity.OrderTable;
-import com.resmenu.Database.Entity.UserTable;
 import com.resmenu.Database.RestaurentMenuDatabase;
 import com.resmenu.POJO.Bill;
 import com.resmenu.R;
 import com.resmenu.adapters.AdapterBill;
-import com.resmenu.adapters.AdapterViewBill;
 import com.resmenu.constants.ApiUrls;
 import com.resmenu.customViews.CustomButton;
 import com.resmenu.customViews.CustomTextView;
@@ -53,6 +51,7 @@ public class ActivityViewMyBill extends AppCompatActivity {
     SharedPreferences mSharedeSharedPreferences;
     TextView txtTotal,txtDiss,txtGst,txtfinal;
     CustomButton btnPay;
+    int tableNO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +59,7 @@ public class ActivityViewMyBill extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         accesstoken = prefs.getString(ACCESS_TOKEN, null);
         mSharedeSharedPreferences = getSharedPreferences("restaurant", MODE_PRIVATE);
+        tableNO=mSharedeSharedPreferences.getInt("table_no", 0);
         txtTotal=findViewById(R.id.total);
         txtDiss=findViewById(R.id.txtDiss);
         txtGst=findViewById(R.id.txtGST);
@@ -78,7 +78,8 @@ public class ActivityViewMyBill extends AppCompatActivity {
             public void onClick(View v) {
 
                 //TODO delete by table no
-                restaurentMenuDatabase.myOrderDao().deleteAll();
+                restaurentMenuDatabase.myOrderDao().deleteByTableId(tableNO);
+                restaurentMenuDatabase.myOrderDao().getAll();
                 Intent intent=new Intent(ActivityViewMyBill.this,TablesActivity.class);
                 startActivity(intent);
                 finish();

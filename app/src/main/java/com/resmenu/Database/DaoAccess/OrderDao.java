@@ -24,8 +24,8 @@ public interface OrderDao {
     @Query("SELECT * FROM OrderTable where tableNo = :tableNo")
     List<OrderTable> getDataByTableNo(int tableNo);
 
-    @Query("DELETE FROM OrderTable WHERE id = :id")
-    void deleteByUserId(int id);
+    @Query("DELETE FROM OrderTable WHERE tableNo = :tableNo")
+    void deleteByTableId(int tableNo);
 
     @Query("SELECT SUM(itemPrice * itemQuantity) FROM ordertable WHERE tableNo = :tableNo")
     double getTotal(int tableNo);
