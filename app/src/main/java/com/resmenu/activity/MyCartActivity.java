@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -57,6 +58,8 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
     private RequestQueue mRequestQueue;
     private String accesstoken;
     private ProgressDialog progressDialog;
+    private CustomTextView txtToolbarTital;
+    private ImageView imgSearch,imgCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,12 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
         SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
         accesstoken = prefs.getString(ACCESS_TOKEN, null);
+        txtToolbarTital=findViewById(R.id.toolbar_title);
+        txtToolbarTital.setText("My Order");
+        imgSearch=findViewById(R.id.ibsearch);
+        imgCart=findViewById(R.id.ibmycart);
+        imgCart.setVisibility(View.GONE);
+        imgSearch.setVisibility(View.GONE);
 
         mBtnPproceedtopay = findViewById(R.id.btn_proceedtopay);
         mBtnContinueorde = findViewById(R.id.btn_continueorder);

@@ -24,6 +24,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
     ImageView plus,minus;
     int x=1;
     Button cancle,addtoCart;
+    ImageView ibmycart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,13 @@ public class ActivityMenuDetail extends AppCompatActivity {
                 finish();
             }
         });
+        ibmycart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityMenuDetail.this, MyCartActivity.class));
+                finish();
+            }
+        });
 
     }
 
@@ -97,5 +105,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
         quantity=findViewById(R.id.quantity);
         addtoCart=findViewById(R.id.btnAdd);
         cancle=findViewById(R.id.btnCancle);
+        ibmycart=findViewById(R.id.ibmycart);
     }
 }

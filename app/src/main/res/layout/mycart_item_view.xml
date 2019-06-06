@@ -1,88 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:orientation="vertical">
 
-    <com.resmenu.customViews.CustomTextView
-        android:id="@+id/txt_item_names"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="18sp"
-        app:fontType="gotham_light"
-        app:layout_constraintEnd_toStartOf="@+id/plus"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/plus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:src="@drawable/ic_add_black_24dp"
-        android:text="+"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/minus"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/txt_item_names"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.resmenu.customViews.CustomTextView
-        android:id="@+id/quantity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="1"
-        android:textSize="16sp"
-        app:fontType="gotham_bold"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/plus"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="184dp"
-        tools:layout_editor_absoluteY="-1dp" />
-
-    <ImageView
-        android:id="@+id/minus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_remove_black_24dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/total"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/plus"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.resmenu.customViews.CustomTextView
-        android:id="@+id/total"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Cost"
-        android:textSize="18sp"
-        app:fontType="gotham_light"
-        app:layout_constraintEnd_toStartOf="@+id/imageView_cancle"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/minus"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView_cancle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_close_black_24dp"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="379dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:padding="3dp"
+        android:weightSum="4">
 
 
-</android.support.constraint.ConstraintLayout>
+        <!-- <com.resmenu.customViews.CustomTextView
+             android:id="@+id/txtItemName"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_weight="2"
+             android:gravity="center"
+             android:text="confirm is pressed"
+             android:textSize="15sp"
+             android:textStyle="bold" />
+
+         <com.resmenu.customViews.CustomTextView
+             android:id="@+id/txtQnt"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_weight="1"
+             android:gravity="center"
+             android:text="1"
+             android:textSize="15sp"
+             android:textStyle="bold" />
+
+         <com.resmenu.customViews.CustomTextView
+             android:id="@+id/txtItmPrice"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_weight="1"
+             android:gravity="center"
+             android:text="345"
+             android:textSize="15sp"
+             android:textStyle="bold" />
+
+     </LinearLayout>
+
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="0.5dp"
+         android:layout_marginTop="5dp"
+         android:layout_marginBottom="5dp"
+         android:background="#494848" />-->
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2.2"
+            android:layout_height="wrap_content">
+            <com.resmenu.customViews.CustomTextView
+                android:id="@+id/txt_item_names"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:layout_marginLeft="5dp"
+                android:text="confirm is pressed"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:weightSum="3"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/plus"
+                android:src="@drawable/ic_add_black_24dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <com.resmenu.customViews.CustomTextView
+                android:layout_weight="1"
+                android:id="@+id/quantity"
+                android:layout_width="0dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="16sp"
+                app:fontType="gotham_bold"
+                />
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/minus"
+                android:src="@drawable/ic_remove_black_24dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:layout_height="wrap_content">
+
+            <com.resmenu.customViews.CustomTextView
+                android:id="@+id/total"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="end"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="111111"
+                android:textSize="16sp"
+                app:fontType="gotham_bold"
+                />
+            <ImageView
+                android:id="@+id/imageView_cancle"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_black_24dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#494848" />
+</LinearLayout>

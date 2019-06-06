@@ -10,6 +10,7 @@
         android:id="@+id/toolbar_menu"
         layout="@layout/generic_toolbar" />
 
+
     <ImageView
         android:id="@+id/arrow_left"
         android:layout_width="35dp"
@@ -24,8 +25,8 @@
         android:id="@+id/recycler_menu_tital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
         android:overScrollMode="never"
         app:layout_constraintLeft_toRightOf="@+id/arrow_left"
