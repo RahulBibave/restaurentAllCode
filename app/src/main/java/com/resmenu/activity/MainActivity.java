@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (access_token != null) {
                         Intent intent = new Intent(MainActivity.this, TablesActivity.class);
-                      // Intent intent = new Intent(MainActivity.this, Kitchen_TableActivity.class);
+                       //Intent intent = new Intent(MainActivity.this, Kitchen_TableActivity.class);
                         intent.putExtra("role", "2");
                         startActivity(intent);
 //                        finish();

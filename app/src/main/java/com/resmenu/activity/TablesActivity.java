@@ -1,5 +1,6 @@
 package com.resmenu.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -111,5 +112,14 @@ public class TablesActivity extends AppCompatActivity {
     protected void onRestart() {
         getTable();
         super.onRestart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+
     }
 }

@@ -2,6 +2,7 @@ package com.resmenu.activity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,10 +26,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.resmenu.Database.Entity.MyCart;
+import com.resmenu.Database.Entity.OrderTable;
+import com.resmenu.Database.RestaurentMenuDatabase;
 import com.resmenu.POJO.MenuItem;
 import com.resmenu.R;
 import com.resmenu.adapters.AdapterHorizontal;
 import com.resmenu.adapters.AdapterSubCat;
+import com.resmenu.adapters.MyCartAdapter;
 import com.resmenu.constants.ApiUrls;
 import com.resmenu.customViews.CustomButton;
 import com.resmenu.customViews.CustomEditText;
@@ -40,12 +45,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.resmenu.activity.MainActivity.ACCESS_TOKEN;
 import static com.resmenu.activity.MainActivity.PREF_NAME;
 
-public class AllMenuActivity extends AppCompatActivity implements AdapterHorizontal.onClickMenu{
+public class AllMenuActivity extends AppCompatActivity implements AdapterHorizontal.onClickMenu,AdapterHorizontal.onAddClick{
     private RecyclerView mRecyclerView;
     private RecyclerView mRecyclerMenuList;
     private RequestQueue mRequestQueue;
@@ -67,6 +73,8 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
     String accesstoken;
     private ProgressDialog progressDialog;
     CustomTextView customTextView;
+    private List<MyCart> myCartArrayList;
+    RestaurentMenuDatabase restaurentMenuDatabase;
     private ImageView ibsearch,imgCart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +87,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
         ibsearch=findViewById(R.id.ibsearch);
         imgCart=findViewById(R.id.ibmycart);
 
+
         mSubCategory = new HashMap<>();
 
         Bundle bundle = getIntent().getExtras();
@@ -90,9 +99,11 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
 
         mBtnConfirmOrder = findViewById(R.id.btn_confirm_order);
         mBtnViewCart = findViewById(R.id.btn_viweCart);
+        getDatabaseList();
         mBtnConfirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                submitOrder();
 //                startActivity(new Intent(AllMenuActivity.this, Activity_WaiterLanding.class));
             }
         });
@@ -206,7 +217,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
                             menuItemArrayList.add(menuItem);
 
                         }
-                        adapterSubCat = new AdapterSubCat(AllMenuActivity.this, menuItemArrayList);
+                        adapterSubCat = new AdapterSubCat(AllMenuActivity.this, menuItemArrayList,AllMenuActivity.this);
                         mRecyclerMenuList.setAdapter(adapterSubCat);
                     }
 
@@ -256,6 +267,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
     @Override
     public void itemClicked(View view, int pos) {
         getMenuItem(arrayList.get(pos));
+        getDatabaseList();
     }
 
     public void getSearch(final String txtSearch){
@@ -289,7 +301,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
                             menuItemArrayList.add(menuItem);
 
                         }
-                        adapterSubCat = new AdapterSubCat(AllMenuActivity.this, menuItemArrayList);
+                        adapterSubCat = new AdapterSubCat(AllMenuActivity.this, menuItemArrayList,AllMenuActivity.this);
                         mRecyclerMenuList.setAdapter(adapterSubCat);
                     }
 
@@ -326,5 +338,169 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
             }
         };
         mRequestQueue.add(stringRequest);
+    }
+
+
+
+    public void submitOrder() {
+
+        mRequestQueue = Volley.newRequestQueue(this);
+        final StringRequest request = new StringRequest(Request.Method.POST, ApiUrls.mUrlSubmitOrder, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                progressDialog.dismiss();
+                RestaurentMenuDatabase menuDatabase;
+
+                Log.e("sadddsasasa", "" + s.toString());
+
+                try {
+
+                    JSONObject object = new JSONObject(s);
+                    Boolean sucess_code = object.getBoolean("Status");
+                    String msg = object.getString("Message");
+                    if (sucess_code.equals(true)) {
+
+                        copyValuesToDatabase(myCartArrayList);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(AllMenuActivity.this);
+                        builder.setMessage(msg)
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        Intent intent=new Intent(AllMenuActivity.this,TablesActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                        //do things
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                progressDialog.dismiss();
+                Log.e("saddd", volleyError.toString());
+
+            }
+        }) {
+
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                // Removed this line if you dont need it or Use application/json
+                params.put("Authorization", "Bearer " + accesstoken);
+                return params;
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+
+                JSONObject jsonObject = new JSONObject();
+               /* try {
+                    jsonObject.put("TotalAmmount", Double.parseDouble(mTvTotalAMount.getText().toString()));
+                    jsonObject.put("tableId",Activity_WaiterLanding.tableNO);
+                    jsonObject.put("orderBy",Activity_WaiterLanding.waiterID);
+                    jsonObject.put("customerEmailId",Activity_WaiterLanding.email);
+                    jsonObject.put("MobileNumber","9808982015");
+                    jsonObject.put("CustomerName",Activity_WaiterLanding.Cu_name);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }*/
+
+                JSONArray jsonArray = new JSONArray();
+                for (int i = 0; i < myCartArrayList.size(); i++) {
+                    JSONObject jsonObject1 = new JSONObject();
+                    try {
+                        double diss = 0.0;
+                        jsonObject1.put("ItemId", myCartArrayList.get(i).getId() + "");
+                        jsonObject1.put("CategoryId", "");
+                        jsonObject1.put("TableId", myCartArrayList.get(i).getTableNo() +"");
+                        jsonObject1.put("ItemName",myCartArrayList.get(i).getMenuName()+"");
+                        jsonObject1.put("WaiterId", Activity_WaiterLanding.waiterID + "");
+                        jsonObject1.put("Quantity", myCartArrayList.get(i).getItemQuantity() + "");
+                       /* UserTable userTable = new UserTable();
+                        userTable.setItemId(myCartArrayList.get(i).getId()+"");
+                        userTable.setItemQuantity(myCartArrayList.get(i).getItemQuantity());
+                        userTable.setMenuName(myCartArrayList.get(i).getMenuName());
+                        userTable.setMenuPrice(myCartArrayList.get(i).getMenuPrice());
+                        restaurentMenuDatabase.myUserTableDao().insert(userTable);*/
+                        Log.e("zaaaaaaaaaaaaaaaaaaaaaaaaaaa",Activity_WaiterLanding.waiterID + ""+myCartArrayList.get(i).getId() + ",,"+myCartArrayList.get(i).getTableNo() +"77"+myCartArrayList.get(i).getMenuName()+"444  "+myCartArrayList.get(i).getItemQuantity() + "");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
+                    jsonArray.put(jsonObject1);
+                }
+
+                try {
+                    jsonObject.put("Items", jsonArray);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Log.e("xxxxxxxxxxxxxx", "" + jsonObject.toString());
+                String str = jsonObject.toString();
+                return str.getBytes();
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
+        mRequestQueue.add(request);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please Wait....");
+        progressDialog.setProgressStyle(progressDialog.STYLE_SPINNER);
+        progressDialog.show();
+    }
+
+
+    private void copyValuesToDatabase(List<MyCart> myCartArrayList) {
+        SharedPreferences  mSharedeSharedPreferences = getSharedPreferences("restaurant", MODE_PRIVATE);
+        for (int i = 0; i < myCartArrayList.size(); i++) {
+            OrderTable userTable = new OrderTable();
+            userTable.setTableNo(mSharedeSharedPreferences.getInt("table_no",0));
+            userTable.setItemId("" + myCartArrayList.get(i).getId());
+            userTable.setItemQuantity(myCartArrayList.get(i).getItemQuantity());
+            userTable.setMenuName(myCartArrayList.get(i).getMenuName());
+            userTable.setMenuPrice(myCartArrayList.get(i).getMenuPrice());
+            userTable.setTableStatus(true);
+            userTable.setWaiterId(Activity_WaiterLanding.waiterID);
+            userTable.setUserName(Activity_WaiterLanding.Cu_name);
+            userTable.setMobileNo(Activity_WaiterLanding.mobile);
+            userTable.setUserEmail(Activity_WaiterLanding.email);
+            restaurentMenuDatabase.myOrderDao().insert(userTable);
+        }
+
+        restaurentMenuDatabase.myCartDao().deleteAll();
+        myCartArrayList.clear();
+    }
+
+
+    private void getDatabaseList() {
+
+        restaurentMenuDatabase = RestaurentMenuDatabase.getInstance(this);
+        myCartArrayList = restaurentMenuDatabase.myCartDao().getAll();
+
+        if (myCartArrayList.size() == 0 && myCartArrayList.isEmpty()) {
+           mBtnConfirmOrder.setEnabled(false);
+        }else {
+            mBtnConfirmOrder.setEnabled(true);
+        }
+    }
+
+    @Override
+    public void itemAddClick(View view) {
+        getDatabaseList();
     }
 }

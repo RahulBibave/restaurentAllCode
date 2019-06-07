@@ -35,10 +35,18 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
 
     private Context mContext;
     private ArrayList<MenuItem> menuItemArrayList;
+    AdapterHorizontal.onAddClick onAddClick;
 
-    public AdapterSubCat(Context mContext, ArrayList<MenuItem> menuItemArrayList) {
+
+   /* public AdapterSubCat(Context mContext, ArrayList<MenuItem> menuItemArrayList) {
         this.mContext = mContext;
         this.menuItemArrayList = menuItemArrayList;
+    }*/
+
+    public AdapterSubCat(Context mContext, ArrayList<MenuItem> menuItemArrayList, AdapterHorizontal.onAddClick onAddClick) {
+        this.mContext = mContext;
+        this.menuItemArrayList = menuItemArrayList;
+        this.onAddClick = onAddClick;
     }
 
     @NonNull
@@ -71,6 +79,7 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
 
                 viewHolderKitchen.mBtnAddToCart.setEnabled(false);
                 Toast.makeText(mContext, "Added to cart", Toast.LENGTH_SHORT).show();
+                onAddClick.itemAddClick(v);
             }
         });
 
@@ -136,4 +145,5 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
 
         }
     }
+
 }

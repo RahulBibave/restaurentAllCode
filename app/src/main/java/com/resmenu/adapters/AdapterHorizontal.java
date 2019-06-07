@@ -77,4 +77,7 @@ public class AdapterHorizontal extends RecyclerView.Adapter<AdapterHorizontal.Vi
     public  interface onClickMenu{
         void itemClicked(View view,int pos);
     }
+    public interface onAddClick{
+        void itemAddClick(View view);
+    }
 }

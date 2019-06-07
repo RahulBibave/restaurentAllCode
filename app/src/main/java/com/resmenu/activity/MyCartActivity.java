@@ -2,6 +2,7 @@ package com.resmenu.activity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -89,7 +90,6 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
         mBtnContinueorde.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
             }
         });
@@ -110,7 +110,7 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
         if (myCartArrayList.size() == 0 && myCartArrayList.isEmpty()) {
             mTvNoItems.setVisibility(View.VISIBLE);
             mBtnPproceedtopay.setEnabled(false);
-            mBtnContinueorde.setEnabled(false);
+            mBtnContinueorde.setEnabled(true);
         } else {
             myCartAdapter = new MyCartAdapter(this, myCartArrayList, restaurentMenuDatabase, this);
             mRecyclerViewCart.setLayoutManager(new LinearLayoutManager(this));
@@ -148,6 +148,8 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
                                 .setCancelable(false)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        Intent intent=new Intent(MyCartActivity.this,TablesActivity.class);
+                                        startActivity(intent);
                                         finish();
                                         //do things
                                     }
@@ -201,7 +203,7 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
                         double diss = 0.0;
                         jsonObject1.put("ItemId", myCartArrayList.get(i).getId() + "");
                         jsonObject1.put("CategoryId", "");
-                        jsonObject1.put("TableId", Activity_WaiterLanding.tableNO +"");
+                        jsonObject1.put("TableId", myCartArrayList.get(i).getTableNo() +"");
                          jsonObject1.put("ItemName",myCartArrayList.get(i).getMenuName()+"");
                         jsonObject1.put("WaiterId", Activity_WaiterLanding.waiterID + "");
                         jsonObject1.put("Quantity", myCartArrayList.get(i).getItemQuantity() + "");
@@ -211,6 +213,7 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
                         userTable.setMenuName(myCartArrayList.get(i).getMenuName());
                         userTable.setMenuPrice(myCartArrayList.get(i).getMenuPrice());
                         restaurentMenuDatabase.myUserTableDao().insert(userTable);*/
+                       Log.e("zaaaaaaaaaaaaaaaaaaaaaaaaaaa",Activity_WaiterLanding.waiterID + ""+myCartArrayList.get(i).getId() + ",,"+myCartArrayList.get(i).getTableNo() +"77"+myCartArrayList.get(i).getMenuName()+"444  "+myCartArrayList.get(i).getItemQuantity() + "");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
