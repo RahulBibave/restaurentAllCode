@@ -56,7 +56,8 @@ public class Activity_WaiterLanding extends AppCompatActivity {
     private CustomEditText mEdtName, mEdtEmail, mEdtMobile;
     private String flag = "";
     public static String Cu_name, email, mobile;
-    public static int waiterID, tableNO;
+    public static int  tableNO;
+    public static int waiterID=0;
     RestaurentMenuDatabase restaurentMenuDatabase;
     Context mContext;
     private List<OrderTable> userTables;
@@ -76,6 +77,7 @@ public class Activity_WaiterLanding extends AppCompatActivity {
         getStaff();
         init();
         tableNO=mSharedeSharedPreferences.getInt("table_no", 0);
+
         if (restaurentMenuDatabase.myOrderDao().orderCount(mSharedeSharedPreferences.getInt("table_no", 0)) > 0){
             SharedPreferences mSharedeSharedPreferences = getSharedPreferences("restaurant", MODE_PRIVATE);
             userTables=new ArrayList<>();
@@ -83,14 +85,20 @@ public class Activity_WaiterLanding extends AppCompatActivity {
             mEdtEmail.setText(userTables.get(0).getUserEmail());
             mEdtName.setText(userTables.get(0).getUserName());
             mEdtMobile.setText(userTables.get(0).getMobileNo());
+            waiter_ID=userTables.get(0).getWaiterId();
             flag="1";
         }
         mMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (flag.equals("1")) {
-                    Intent intent = new Intent(Activity_WaiterLanding.this, Activity_Menu.class);
-                    startActivity(intent);
+                    if (waiter_ID==0){
+
+                    }else {
+                        Intent intent = new Intent(Activity_WaiterLanding.this, Activity_Menu.class);
+                        startActivity(intent);
+                    }
+
                 }
             }
         });

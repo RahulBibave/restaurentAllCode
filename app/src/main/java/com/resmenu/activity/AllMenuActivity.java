@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -181,6 +182,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
 
         getMenuItem( menu_type);
 
+
     }
 
     public void getMenuItem(final int menuID) {
@@ -212,7 +214,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
                             String CategoryName=jsonObject.getString("CategoryName");
 
                             Double quantity = jsonObject.getDouble("Quantity");
-                            Log.e("xxxxxxxxxxx", "" + CategoryName);
+                            Log.e("xxxxxxxxxxx", "" + id);
                             MenuItem menuItem = new MenuItem(id, ItemName , ItemDescription, ItemPrize, discount, isAcive, quantity,image,CategoryName);
                             menuItemArrayList.add(menuItem);
 
@@ -296,7 +298,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
                             String CategoryName=jsonObject.getString("CategoryName");
 
                             Double quantity = jsonObject.getDouble("Quantity");
-                            Log.e("dddddddddd", "" + image);
+                            Log.e("dddddddddd", "" + id);
                             MenuItem menuItem = new MenuItem(id, ItemName , ItemDescription, ItemPrize, discount, isAcive, quantity,image,CategoryName);
                             menuItemArrayList.add(menuItem);
 
@@ -420,7 +422,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
                     JSONObject jsonObject1 = new JSONObject();
                     try {
                         double diss = 0.0;
-                        jsonObject1.put("ItemId", myCartArrayList.get(i).getId() + "");
+                        jsonObject1.put("ItemId", myCartArrayList.get(i).getItemID() + "");
                         jsonObject1.put("CategoryId", "");
                         jsonObject1.put("TableId", myCartArrayList.get(i).getTableNo() +"");
                         jsonObject1.put("ItemName",myCartArrayList.get(i).getMenuName()+"");
@@ -470,7 +472,7 @@ public class AllMenuActivity extends AppCompatActivity implements AdapterHorizon
         for (int i = 0; i < myCartArrayList.size(); i++) {
             OrderTable userTable = new OrderTable();
             userTable.setTableNo(mSharedeSharedPreferences.getInt("table_no",0));
-            userTable.setItemId("" + myCartArrayList.get(i).getId());
+            userTable.setItemId("" + myCartArrayList.get(i).getItemID());
             userTable.setItemQuantity(myCartArrayList.get(i).getItemQuantity());
             userTable.setMenuName(myCartArrayList.get(i).getMenuName());
             userTable.setMenuPrice(myCartArrayList.get(i).getMenuPrice());

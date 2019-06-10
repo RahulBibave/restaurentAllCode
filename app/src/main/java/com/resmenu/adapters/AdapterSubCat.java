@@ -68,15 +68,15 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
                 MyCart myCart = new MyCart();
                 myCart.setMenuName(menuItemArrayList.get(position).getItemName());
                 myCart.setMenuPrice(menuItemArrayList.get(position).getPrice());
+                myCart.setItemID(menuItemArrayList.get(position).getItemId());
                 myCart.setItemQuantity(1);
                 // todo need to update with real time data
-                myCart.setWaiterId(1);
+                myCart.setWaiterId(Activity_WaiterLanding.waiterID);
                 myCart.setTableNo(Activity_WaiterLanding.tableNO);
 
                 RestaurentMenuDatabase menuDatabase;
                 menuDatabase = RestaurentMenuDatabase.getInstance(mContext);
                 menuDatabase.myCartDao().insert(myCart);
-
                 viewHolderKitchen.mBtnAddToCart.setEnabled(false);
                 Toast.makeText(mContext, "Added to cart", Toast.LENGTH_SHORT).show();
                 onAddClick.itemAddClick(v);

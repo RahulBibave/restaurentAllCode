@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -38,6 +40,7 @@ public class ActivityKitchen extends AppCompatActivity {
     private String accesstoken;
     private RequestQueue mRequestQueue;
     private ArrayList<GetOrder>getOrders;
+    private Button mBtnSubmit,mBtnMinimize;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,11 +51,66 @@ public class ActivityKitchen extends AppCompatActivity {
         x=getIntent().getIntExtra("tableNo",1);
         init();
         getOrder();
+        mBtnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConfirmOrder();
+            }
+        });
+        mBtnMinimize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void ConfirmOrder() {
+        mRequestQueue=Volley.newRequestQueue(this);
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, ApiUrls.mUrlConfirmOrder, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                    finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                // Removed this line if you dont need it or Use application/json
+                params.put("Authorization", "Bearer " + accesstoken);
+                return params;
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+
+                String str = "{\"TableId\":\"" + x + "\"}";
+
+                return str.getBytes();
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+
+            }
+
+
+        };
+        mRequestQueue.add(stringRequest);
+
     }
 
     private void init() {
         mRecyclerViewKitchen=findViewById(R.id.recycler_kitchen);
         mRecyclerViewKitchen.setLayoutManager(new LinearLayoutManager(this));
+        mBtnSubmit=findViewById(R.id.btnKitchenSubmit);
+        mBtnMinimize=findViewById(R.id.btnMinimize);
 
     }
     public void getOrder(){

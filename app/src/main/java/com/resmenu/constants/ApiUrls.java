@@ -21,5 +21,6 @@ public class ApiUrls {
     public static final String mUrlGetBill="http://webapi.emenuhotels.in/api/Order/GenerateBill";
     public static final String mUrlSubmitFeedBack="http://webapi.emenuhotels.in/api/FeedBack/CreateFeedback";
     public static final String mUrlSearch="http://webapi.emenuhotels.in/api/Item/SearchItemByName";
+    public static final String mUrlConfirmOrder="http://webapi.emenuhotels.in/api/kitchen/ConfirmOrderByTableId";
 
 }

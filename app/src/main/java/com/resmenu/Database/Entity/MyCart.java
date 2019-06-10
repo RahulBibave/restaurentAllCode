@@ -29,6 +29,9 @@ public class MyCart implements Serializable {
     @ColumnInfo(name = "waiterId")
     private int waiterId;
 
+    @ColumnInfo(name = "ItemID")
+    private int ItemID;
+
 
     public int getId() {
         return id;
@@ -76,5 +79,13 @@ public class MyCart implements Serializable {
 
     public void setWaiterId(int waiterId) {
         this.waiterId = waiterId;
+    }
+
+    public int getItemID() {
+        return ItemID;
+    }
+
+    public void setItemID(int itemID) {
+        ItemID = itemID;
     }
 }

@@ -201,10 +201,10 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
                     JSONObject jsonObject1 = new JSONObject();
                     try {
                         double diss = 0.0;
-                        jsonObject1.put("ItemId", myCartArrayList.get(i).getId() + "");
+                        jsonObject1.put("ItemId", myCartArrayList.get(i).getItemID() + "");
                         jsonObject1.put("CategoryId", "");
                         jsonObject1.put("TableId", myCartArrayList.get(i).getTableNo() +"");
-                         jsonObject1.put("ItemName",myCartArrayList.get(i).getMenuName()+"");
+                        // jsonObject1.put("ItemName",myCartArrayList.get(i).getMenuName()+"");
                         jsonObject1.put("WaiterId", Activity_WaiterLanding.waiterID + "");
                         jsonObject1.put("Quantity", myCartArrayList.get(i).getItemQuantity() + "");
                        /* UserTable userTable = new UserTable();
@@ -213,7 +213,7 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
                         userTable.setMenuName(myCartArrayList.get(i).getMenuName());
                         userTable.setMenuPrice(myCartArrayList.get(i).getMenuPrice());
                         restaurentMenuDatabase.myUserTableDao().insert(userTable);*/
-                       Log.e("zaaaaaaaaaaaaaaaaaaaaaaaaaaa",Activity_WaiterLanding.waiterID + ""+myCartArrayList.get(i).getId() + ",,"+myCartArrayList.get(i).getTableNo() +"77"+myCartArrayList.get(i).getMenuName()+"444  "+myCartArrayList.get(i).getItemQuantity() + "");
+                       Log.e("zaaaaaaaaaaaaaaaaaaaaaaaaaaa",myCartArrayList.get(i).getWaiterId() + "/////////"+myCartArrayList.get(i).getItemID() + "///////"+myCartArrayList.get(i).getTableNo() +"XXXXXXXXX"+myCartArrayList.get(i).getMenuName()+"444  "+myCartArrayList.get(i).getItemQuantity() + "");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -250,7 +250,7 @@ public class MyCartActivity extends AppCompatActivity implements DataTransfer {
         for (int i = 0; i < myCartArrayList.size(); i++) {
             OrderTable userTable = new OrderTable();
             userTable.setTableNo(mSharedeSharedPreferences.getInt("table_no",0));
-            userTable.setItemId("" + myCartArrayList.get(i).getId());
+            userTable.setItemId("" + myCartArrayList.get(i).getItemID());
             userTable.setItemQuantity(myCartArrayList.get(i).getItemQuantity());
             userTable.setMenuName(myCartArrayList.get(i).getMenuName());
             userTable.setMenuPrice(myCartArrayList.get(i).getMenuPrice());

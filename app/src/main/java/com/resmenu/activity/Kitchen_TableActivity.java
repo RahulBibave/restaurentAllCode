@@ -98,4 +98,15 @@ public class Kitchen_TableActivity extends AppCompatActivity {
         mRequestQueue.add(stringRequest);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getTable();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getTable();
+    }
 }
