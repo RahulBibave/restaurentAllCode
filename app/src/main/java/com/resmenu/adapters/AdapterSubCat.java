@@ -85,7 +85,8 @@ public class AdapterSubCat extends RecyclerView.Adapter<AdapterSubCat.ViewHolder
 
         if (menuItemArrayList.get(position).getCategoryName().equals("Veg")){
             viewHolderKitchen.imageButton.setBackgroundResource(R.drawable.veg);
-
+        }else if (menuItemArrayList.get(position).getCategoryName().equals("Non Veg")){
+            viewHolderKitchen.imageButton.setBackgroundResource(R.drawable.non_veg);
         }
         viewHolderKitchen.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
