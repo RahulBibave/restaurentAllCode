@@ -59,7 +59,7 @@ public class ActivityKitchen extends AppCompatActivity {
                 ConfirmOrder();
             }
         });
-        mBtnMinimize.setOnClickListener(ginew View.OnClickListener() {
+        mBtnMinimize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
