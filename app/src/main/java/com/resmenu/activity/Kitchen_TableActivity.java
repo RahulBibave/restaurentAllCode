@@ -27,6 +27,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.resmenu.activity.MainActivity.ACCESS_TOKEN;
 import static com.resmenu.activity.MainActivity.PREF_NAME;
@@ -47,6 +49,18 @@ public class Kitchen_TableActivity extends AppCompatActivity {
         mRecyclerView=findViewById(R.id.recycler_view_live_tables);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         getTable();
+        Timer timer = new Timer();
+        TimerTask hourlyTask = new TimerTask() {
+            @Override
+            public void run () {
+                getTable();
+                // your code here...
+            }
+        };
+
+// schedule the task to run starting now and then every hour...
+        // timer.schedule (hourlyTask, 0l, 1000*60*60);   // 1000*10*60 every 10 minut
+        timer.schedule (hourlyTask, 0l, 1000*60);   //  1 minut
     }
     public void getTable() {
         mRequestQueue = Volley.newRequestQueue(this);

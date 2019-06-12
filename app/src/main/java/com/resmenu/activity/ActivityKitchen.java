@@ -29,6 +29,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.resmenu.activity.MainActivity.ACCESS_TOKEN;
 import static com.resmenu.activity.MainActivity.PREF_NAME;
@@ -57,12 +59,13 @@ public class ActivityKitchen extends AppCompatActivity {
                 ConfirmOrder();
             }
         });
-        mBtnMinimize.setOnClickListener(new View.OnClickListener() {
+        mBtnMinimize.setOnClickListener(ginew View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
     }
 
     private void ConfirmOrder() {
