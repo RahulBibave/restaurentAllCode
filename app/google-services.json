@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "572311079987",
+    "firebase_url": "https://restaurentallcode.firebaseio.com",
+    "project_id": "restaurentallcode",
+    "storage_bucket": "restaurentallcode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572311079987:android:697a663a88e505ad",
+        "android_client_info": {
+          "package_name": "com.resmenu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572311079987-gmb027dniq813e52k7apg3vc5q29m0nm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.resmenu",
+            "certificate_hash": "a4c2f3d5c759b954bce9768e5fd2f8cbe4731ca7"
+          }
+        },
+        {
+          "client_id": "572311079987-qehejri3a4bhp16j3uq3tf1essnootrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEpJ0oZyh8cGHydBuIoDOuqu4GQ2elZN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572311079987-qehejri3a4bhp16j3uq3tf1essnootrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

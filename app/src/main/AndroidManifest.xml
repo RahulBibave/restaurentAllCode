@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.resmenu">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -12,10 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ActivityMenuDetail"></activity>
-        <activity android:name=".activity.ActivityViewMyBill" />
-        <activity android:name=".activity.Kitchen_TableActivity" />
+        <activity android:name=".activity.ActivityMenuDetail"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ActivityViewMyBill"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.Kitchen_TableActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name=".activity.ActivityViewOrder" />
         <activity
             android:name=".activity.MainActivity"
@@ -50,6 +61,12 @@
         <activity
             android:name=".activity.MyCartActivity"
             android:screenOrientation="portrait" />
+
+        <service android:name=".firebase.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
