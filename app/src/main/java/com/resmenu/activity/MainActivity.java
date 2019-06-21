@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.resmenu.R;
 import com.resmenu.constants.ApiUrls;
 import com.resmenu.constants.AppConstants;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+              //  Login();
             }
         });
 
@@ -69,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
         button_login = findViewById(R.id.button_login);
         mEdtID = findViewById(R.id.et_restaurent_id);
         mEdtPass = findViewById(R.id.et_restaurent_password);
-        mEdtID.setText(userid);
-        mEdtPass.setText(userPass);
+
+
+        //TODO remove text
+        mEdtID.setText(FirebaseInstanceId.getInstance().getToken());
+        mEdtPass.setText(FirebaseInstanceId.getInstance().getToken());
     }
 
     public void showAlertDialogButtonClicked() {
